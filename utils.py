@@ -58,9 +58,10 @@ def get_random_tweet(tweets):
     return random.choice(tweets)
 
 print(get_relevant_tweets(
-    query = "taco bell",
+    query = "Biggie",
     access_token = TWITTER_ACCESS_TOKEN,
     access_token_secret = TWITTER_ACCESS_TOKEN_SECRET,
     key = TWITTER_KEY,
     key_secret = TWITTER_KEY_SECRET,
     count = 10))
+    
