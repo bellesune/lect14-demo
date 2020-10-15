@@ -30,30 +30,29 @@ class TwitterQueryTestCase(unittest.TestCase):
         self.success_test_params = [
             {
                 KEY_INPUT: "Biggie Smalls",
-                KEY_EXPECTED: {}
-            },
-            {
-                KEY_INPUT: "Tupac Shakur",
-                KEY_EXPECTED: {}
-            },
-            {
-                KEY_INPUT: "Beyonce Knowles",
-                KEY_EXPECTED: {}
+                KEY_EXPECTED: {
+                    KEY_AUTHOR: "@triciascot99",
+                    KEY_DATE: "10/15/2020, 21:24",
+                    KEY_URL: "http://twitter.com/download/iphone",
+                }
             },
         ]
 
-    def test_auth_success(self):
+    def test_get_random_tweet_success(self):
         for test_case in self.success_test_params:
             relevant_tweets = get_relevant_tweets(
-                query = "Biggie",
+                query = test_case[KEY_INPUT],
                 access_token = TWITTER_ACCESS_TOKEN,
                 access_token_secret = TWITTER_ACCESS_TOKEN_SECRET,
                 key = TWITTER_KEY,
                 key_secret = TWITTER_KEY_SECRET,
-                count = 10)
-            first_tweet = relevant_tweets[0]
-            self.assertEqual(first_tweet[KEY_AUTHOR], "@CMecenary")
-
+                count = 3)
+                
+            random_tweet = get_random_tweet(relevant_tweets)
+            expected = test_case[KEY_EXPECTED]
+            
+            self.assertEqual(random_tweet[KEY_AUTHOR], expected[KEY_AUTHOR])
+            self.assertEqual(random_tweet[KEY_DATE], expected[KEY_DATE])
         
 if __name__ == '__main__':
     unittest.main()

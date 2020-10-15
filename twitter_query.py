@@ -53,7 +53,5 @@ def get_relevant_tweets(query, access_token, access_token_secret, key, key_secre
         
     return relevant_tweets
     
-    
 def get_random_tweet(tweets):
     return random.choice(tweets)
-    
