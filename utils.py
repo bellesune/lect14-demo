@@ -43,23 +43,24 @@ def get_relevant_tweets(query, access_token, access_token_secret, key, key_secre
         author = "@" + result.author.screen_name
         url = result.source_url
         date = result.created_at
-
+        
         relevant_tweets.append({
             KEY_AUTHOR: contents, 
-            KEY_DATE: date, 
+            KEY_DATE: date.strftime("%m/%d/%Y, %H:%M"), 
             KEY_AUTHOR: author, 
             KEY_URL: url,
         })
+        
     return relevant_tweets
+    
     
 def get_random_tweet(tweets):
     return random.choice(tweets)
 
-get_relevant_tweets(
-    query = "test",
+print(get_relevant_tweets(
+    query = "taco bell",
     access_token = TWITTER_ACCESS_TOKEN,
     access_token_secret = TWITTER_ACCESS_TOKEN_SECRET,
     key = TWITTER_KEY,
     key_secret = TWITTER_KEY_SECRET,
-    count = 10)
-    
+    count = 10))
