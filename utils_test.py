@@ -1,9 +1,7 @@
 '''
-    split_test.py
+    utils_test.py
     
-    This file tests string.split(). In the real world, there's no need to test
-    Python's library functions, but we're just doing this as an intro to unit
-    tests.
+    This file tests utils.py.
 '''
 
 import unittest
@@ -32,8 +30,23 @@ class SplitTestCase(unittest.TestCase):
                     KEY_FIRST_WORD: "Bone",
                     KEY_SECOND_WORD: "Thigs",
                 }
-            }
-            # TODO add another
+            },
+            {
+                KEY_INPUT: "Beyonce Knowles",
+                KEY_EXPECTED: {
+                    KEY_LENGTH: 2,
+                    KEY_FIRST_WORD: "Beyonce",
+                    KEY_SECOND_WORD: "Knowles",
+                }
+            },
+            {
+                KEY_INPUT: "Ariana Grande",
+                KEY_EXPECTED: {
+                    KEY_LENGTH: 2,
+                    KEY_FIRST_WORD: "Ariana",
+                    KEY_SECOND_WORD: "Grande",
+                }
+            },
         ]
         
         self.failure_test_params = [
@@ -50,9 +63,15 @@ class SplitTestCase(unittest.TestCase):
                     KEY_LENGTH: 2,
                     KEY_FIRST_WORD: "Tupac",
                 }
-            }
+            }]
             # TODO add another
-        ]
+            
+        self.exception_test_params = [
+            {
+                KEY_INPUT: 12,
+            },
+
+            ]
 
 
     def test_split_success(self):
@@ -71,7 +90,11 @@ class SplitTestCase(unittest.TestCase):
             
             self.assertNotEqual(len(inp), expected[KEY_LENGTH])
             self.assertNotEqual(inp[0], expected[KEY_FIRST_WORD])
+            
+    def test_split_exception(self):
+        for test in self.exception_test_params:
+            self.assertRaises(test[KEY_INPUT].split())
 
-
+        
 if __name__ == '__main__':
     unittest.main()
