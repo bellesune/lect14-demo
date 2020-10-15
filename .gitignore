@@ -1,2 +1,3 @@
 sql.env
 tweepy.env
+__pycache__/

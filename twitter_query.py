@@ -1,5 +1,5 @@
 '''
-    utils_test.py
+    twitter_query.py
     
     This file contains useful utility functions. In the real world,
     we would have no such file because functions should be contained
@@ -56,12 +56,4 @@ def get_relevant_tweets(query, access_token, access_token_secret, key, key_secre
     
 def get_random_tweet(tweets):
     return random.choice(tweets)
-
-print(get_relevant_tweets(
-    query = "Biggie",
-    access_token = TWITTER_ACCESS_TOKEN,
-    access_token_secret = TWITTER_ACCESS_TOKEN_SECRET,
-    key = TWITTER_KEY,
-    key_secret = TWITTER_KEY_SECRET,
-    count = 10))
     
