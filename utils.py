@@ -45,7 +45,7 @@ def get_relevant_tweets(query, access_token, access_token_secret, key, key_secre
         date = result.created_at
         
         relevant_tweets.append({
-            KEY_AUTHOR: contents, 
+            KEY_CONTENTS: contents, 
             KEY_DATE: date.strftime("%m/%d/%Y, %H:%M"), 
             KEY_AUTHOR: author, 
             KEY_URL: url,
